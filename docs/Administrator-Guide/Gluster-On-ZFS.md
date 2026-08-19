@@ -202,7 +202,5 @@ Show which node a file is on (for restoring files from ZFS snapshots):
 
 ### Recurring ZFS Snapshots
 
-Since the community site will not let me actually post the script due to some random bug with Akismet spam blocking, I'll just post links instead.
-
-- [Recurring ZFS Snapshots](http://community.spiceworks.com/how_to/show/15303-recurring-zfs-snapshots)
-- Or use <https://github.com/zfsonlinux/zfs-auto-snapshot>
+For recurring snapshots, see the maintained
+[zfs-auto-snapshot project](https://github.com/zfsonlinux/zfs-auto-snapshot).

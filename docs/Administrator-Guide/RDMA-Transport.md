@@ -23,8 +23,9 @@ CIFS Clients/Windows Clients to Samba Server communication would still happen ov
 
 # Setup
 
-Please refer to these external documentation to setup RDMA on your machines  
-http://people.redhat.com/dledford/infiniband_get_started.html
+RDMA is no longer supported in current GlusterFS builds. For historical
+deployments, consult the documentation provided by your operating system and
+InfiniBand hardware vendors.
 
 ## Creating Trusted Storage Pool
 
