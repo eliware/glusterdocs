@@ -181,11 +181,32 @@ operation to migrate data from the removed-bricks to the rest of the volume.
 
 ## Replace faulty brick
 
+### Choosing between `replace-brick` and `reset-brick`
+
+Use `replace-brick` when the source brick is being replaced by a genuinely new
+brick. The command updates the volume configuration and starts the healing
+needed to synchronize the new brick. It is supported for pure replicate and
+distributed-replicate volumes; for a distribute-only volume, use
+`add-brick` followed by `remove-brick` instead.
+
+Use `reset-brick` when the brick is being relocated while retaining its brick
+identity, such as moving the brick to another path or host. The `start` form
+stops a specific source brick safely:
+
+        # gluster volume reset-brick <VOLNAME> <SOURCE-BRICK> start
+
+The replacement form is:
+
+        # gluster volume reset-brick <VOLNAME> <SOURCE-BRICK> <NEW-BRICK> commit
+
+Do not use `reset-brick` to replace a source brick with a genuinely new brick.
+GlusterFS rejects that case and directs the operator to use `replace-brick`.
+
 **Replacing a brick in a _pure_ distribute volume**
 
 To replace a brick on a distribute only volume, add the new brick and then remove the brick you want to replace. This will trigger a rebalance operation which will move data from the removed brick.
 
-> NOTE: Replacing a brick using the 'replace-brick' command in gluster is supported only for _pure_ replicate or distributed-replicate volumes.
+> NOTE: Replacing a brick using the `replace-brick` command in gluster is supported only for _pure_ replicate or distributed-replicate volumes.
 
 Steps to remove brick Server1:/home/gfs/r2_1 and add Server1:/home/gfs/r2_2:
 
